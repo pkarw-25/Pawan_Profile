@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pawan Kumar | AI/ML Researcher & Data Scientist</title>
-  <meta name="description" content="Portfolio of Pawan Kumar - MSc Data Science at University of Bristol, B.Tech CSE IIT (BHU) Varanasi. Specializing in Deep Vision, MRI Image Denoising, and Scalable Systems." />
+  <title>Pawan Kumar | Data Science & Deep Learning</title>
+  <meta name="description" content="Personal portfolio of Pawan Kumar. MSc Data Science student at the University of Bristol and B.Tech CSE graduate from IIT (BHU) Varanasi." />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,30 +18,14 @@
               cyan: '#06b6d4',
               teal: '#14b8a6',
               purple: '#8b5cf6',
-              violet: '#6366f1',
-              emerald: '#10b981',
               dark: '#030712',
               card: 'rgba(15, 23, 42, 0.78)',
-              border: 'rgba(56, 189, 248, 0.18)',
+              border: 'rgba(56, 189, 248, 0.2)',
             }
           },
           fontFamily: {
             sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['Fira Code', 'monospace']
-          },
-          animation: {
-            'float-slow': 'float 6s ease-in-out infinite',
-            'pulse-glow': 'pulseGlow 4s ease-in-out infinite alternate',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' },
-            },
-            pulseGlow: {
-              '0%': { opacity: '0.2' },
-              '100%': { opacity: '0.55' },
-            }
           }
         }
       }
@@ -64,11 +48,8 @@
       color: #f3f4f6;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
-      selection-background-color: #06b6d4;
-      selection-color: #000;
     }
 
-    /* Custom Webkit Scrollbar */
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -83,42 +64,34 @@
       background: #06b6d4;
     }
 
-    /* Glassmorphism Styles */
     .glass-card {
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.6);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .glass-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 20px 35px -10px rgba(6, 182, 212, 0.25);
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 15px 30px -8px rgba(6, 182, 212, 0.25);
     }
 
     .glass-panel-glow {
-      background: rgba(15, 23, 42, 0.82);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 0 35px -5px rgba(6, 182, 212, 0.18);
+      box-shadow: 0 0 30px -5px rgba(6, 182, 212, 0.15);
     }
 
-    /* Gradients */
     .gradient-text-cyan {
       background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .gradient-text-emerald {
-      background: linear-gradient(135deg, #34d399 0%, #06b6d4 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
 
-    /* Fixed Three.js WebGL Layer */
     #canvas-container {
       position: fixed;
       top: 0;
@@ -129,7 +102,6 @@
       pointer-events: none;
     }
 
-    /* Interactive Comparison Slider */
     .comparison-container {
       position: relative;
       user-select: none;
@@ -141,7 +113,7 @@
       bottom: 0;
       width: 3px;
       background: #06b6d4;
-      box-shadow: 0 0 15px #06b6d4, 0 0 30px rgba(6, 182, 212, 0.6);
+      box-shadow: 0 0 15px #06b6d4, 0 0 25px rgba(6, 182, 212, 0.6);
       transform: translateX(-50%);
       cursor: ew-resize;
     }
@@ -150,73 +122,70 @@
 
 <body class="relative min-h-screen text-slate-100">
 
-  <!-- 3D Three.js Interactive Particle / Neural Constellation Background -->
+  <!-- 3D Three.js Interactive Neural Constellation Background -->
   <div id="canvas-container"></div>
 
   <!-- Ambient Glow Blobs -->
-  <div class="fixed top-0 left-1/4 w-[32rem] h-[32rem] bg-cyan-600/15 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse-glow"></div>
-  <div class="fixed top-1/2 right-10 w-[28rem] h-[28rem] bg-purple-600/15 rounded-full blur-[160px] pointer-events-none -z-10 animate-pulse-glow"></div>
-  <div class="fixed bottom-10 left-1/3 w-80 h-80 bg-emerald-600/10 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed top-1/2 right-10 w-96 h-96 bg-purple-600/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
 
-  <!-- HEADER / NAVIGATION -->
-  <header class="fixed top-0 left-0 w-full z-50 glass-card !rounded-none border-b border-slate-800/80 transition-all duration-300">
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 left-0 w-full z-50 glass-card !rounded-none border-b border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Brand Logo / Identity -->
+      <!-- Brand Logo / Name -->
       <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 p-[2px] transition-transform duration-300 group-hover:scale-110">
-          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-mono font-bold text-cyan-400">
-            PK
-          </div>
+        <div class="w-10 h-10 rounded-full overflow-hidden border border-cyan-400/50 p-0.5">
+          <img src="profile_photo.jpeg" alt="Pawan Kumar" class="w-full h-full object-cover rounded-full" onerror="this.src='git_logo.png'" />
         </div>
         <div>
-          <span class="font-bold tracking-tight text-white text-lg group-hover:text-cyan-400 transition-colors">Pawan Kumar</span>
-          <span class="text-xs block text-slate-400 font-mono">Bristol &middot; IIT (BHU)</span>
+          <span class="font-bold tracking-tight text-white text-base group-hover:text-cyan-400 transition-colors">Pawan Kumar</span>
+          <span class="text-xs block text-slate-400 font-mono">Univ. of Bristol &middot; IIT (BHU)</span>
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
+      <!-- Desktop Links -->
       <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#research" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i> Research & AI</a>
-        <a href="#projects" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="layers" class="w-4 h-4 text-purple-400"></i> Projects</a>
-        <a href="#skills" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="code-2" class="w-4 h-4 text-emerald-400"></i> Tech Stack</a>
-        <a href="#experience" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="briefcase" class="w-4 h-4 text-blue-400"></i> Experience</a>
-        <a href="#education" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="graduation-cap" class="w-4 h-4 text-amber-400"></i> Education</a>
-        <a href="#contact" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5"><i data-lucide="send" class="w-4 h-4 text-pink-400"></i> Contact</a>
+        <a href="#about" class="hover:text-cyan-400 transition-colors">About</a>
+        <a href="#research" class="hover:text-cyan-400 transition-colors">Research & AI</a>
+        <a href="#projects" class="hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#experience" class="hover:text-cyan-400 transition-colors">Experience</a>
+        <a href="#skills" class="hover:text-cyan-400 transition-colors">Skills</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors">Contact</a>
       </nav>
 
-      <!-- Action Items & Overdrive Trigger -->
+      <!-- Actions -->
       <div class="hidden md:flex items-center gap-3">
-        <button id="warp-btn" title="Accelerate 3D neural constellation" class="px-3 py-1.5 rounded-lg border border-cyan-500/30 text-xs font-mono text-cyan-300 bg-cyan-950/40 hover:bg-cyan-900/50 transition-all flex items-center gap-1.5">
+        <button id="warp-btn" title="Speed up 3D background animation" class="px-3 py-1.5 rounded-lg border border-cyan-500/30 text-xs font-mono text-cyan-300 bg-cyan-950/40 hover:bg-cyan-900/50 transition-all flex items-center gap-1.5">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-cyan-400"></i>
-          <span>Warp Field</span>
+          <span>Warp 3D</span>
         </button>
-        <button onclick="openResumeModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-medium text-xs hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all transform hover:-translate-y-0.5 flex items-center gap-1.5">
-          <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
-          <span>Verified CV</span>
-        </button>
+        <a href="Resume_Pawan.pdf" download="Pawan_Kumar_Resume.pdf" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-medium text-xs hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] transition-all flex items-center gap-1.5">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span>Download Resume</span>
+        </a>
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <button id="mobile-toggle" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none" aria-label="Toggle Menu">
+      <!-- Mobile Button -->
+      <button id="mobile-toggle" class="md:hidden p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800" aria-label="Toggle Menu">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </div>
 
     <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden md:hidden px-4 pt-3 pb-6 border-b border-slate-800 bg-slate-950/95 backdrop-blur-xl">
-      <div class="flex flex-col space-y-3 font-medium text-slate-300">
-        <a href="#research" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Research & AI</a>
-        <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Projects</a>
-        <a href="#skills" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Tech Stack</a>
-        <a href="#experience" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Experience</a>
-        <a href="#education" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Education & Milestones</a>
-        <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-slate-800 hover:text-cyan-400">Contact</a>
-        <div class="pt-2 flex gap-2">
-          <button onclick="openResumeModal()" class="w-full py-2.5 rounded-lg bg-cyan-600 text-white font-semibold text-xs flex items-center justify-center gap-1.5">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-            <span>View Resume Options</span>
-          </button>
+      <div class="flex flex-col space-y-3 font-medium text-slate-300 text-sm">
+        <a href="#about" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">About</a>
+        <a href="#research" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">Research & AI</a>
+        <a href="#projects" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">Projects</a>
+        <a href="#experience" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">Experience</a>
+        <a href="#skills" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">Skills</a>
+        <a href="#contact" class="mobile-nav-link py-1.5 px-3 rounded hover:bg-slate-800">Contact</a>
+        <div class="pt-2">
+          <a href="Resume_Pawan.pdf" download="Pawan_Kumar_Resume.pdf" class="w-full py-2.5 rounded-lg bg-cyan-600 text-white font-semibold text-xs flex items-center justify-center gap-1.5">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Download Resume (PDF)</span>
+          </a>
         </div>
       </div>
     </div>
@@ -225,167 +194,198 @@
   <main class="relative z-10 pt-24">
 
     <!-- 1. HERO SECTION -->
-    <section id="hero" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
-      <div class="max-w-6xl mx-auto text-center flex flex-col items-center">
+    <section id="hero" class="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
         
-        <!-- Live Academic / Research Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-cyan-500/40 text-xs font-mono text-cyan-300 mb-8 animate-float-slow">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-          <span>MSc Data Science @ Univ. of Bristol &bull; IIT (BHU) CSE Alumnus</span>
+        <!-- Left: Text & Bio -->
+        <div class="text-center md:text-left flex-1">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-card border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>MSc Data Science &bull; University of Bristol, UK</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white mb-3">
+            Hi, I'm <span class="gradient-text-cyan">Pawan Kumar</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl font-medium text-slate-300 mb-4">
+            B.Tech in Computer Science from <span class="text-white font-semibold">IIT (BHU) Varanasi</span> &bull; CPI 7.99
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-300 leading-relaxed mb-8 max-w-xl">
+            I work on computer vision, deep learning, and backend systems. During my time as a Junior Research Fellow at IITRAM, I built <strong>NoiseAwareSwinUNet</strong> for clinical MRI denoising (accepted at <strong>NCVPRIPG 2026</strong>). I also build distributed systems, full-stack tools, and enjoy competitive problem solving.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-8">
+            <a href="#projects" class="px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition flex items-center gap-2">
+              <span>View My Work</span>
+              <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+            </a>
+            <a href="Resume_Pawan.pdf" download="Pawan_Kumar_Resume.pdf" class="px-6 py-3 rounded-xl glass-card text-slate-200 hover:text-white hover:border-cyan-400/50 text-sm font-medium transition flex items-center gap-2">
+              <i data-lucide="download" class="w-4 h-4 text-cyan-400"></i>
+              <span>Download Resume</span>
+            </a>
+            <a href="#contact" class="px-5 py-3 rounded-xl glass-card text-slate-300 hover:text-white text-sm transition">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Social Icons & Badges -->
+          <div class="flex items-center justify-center md:justify-start gap-4 text-slate-400">
+            <!-- GitHub -->
+            <a href="https://github.com/pkarw-25" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full glass-card hover:border-cyan-400/50 transition flex items-center justify-center" title="GitHub Profile">
+              <img src="git_logo.png" alt="GitHub" class="w-5 h-5 rounded-full object-contain" onerror="this.onerror=null; this.src='https://github.githubassets.com/favicons/favicon.png';" />
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/pawan-kumar-32439a239/" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-full glass-card hover:border-cyan-400/50 transition flex items-center justify-center" title="LinkedIn Profile">
+              <img src="LinkedIn_logo.png" alt="LinkedIn" class="w-5 h-5 rounded object-contain" onerror="this.onerror=null; this.src='https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca';" />
+            </a>
+
+            <!-- Email Direct -->
+            <a href="mailto:pawankumariit21@gmail.com" class="p-2.5 rounded-full glass-card hover:text-cyan-400 transition" title="Send Email">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </a>
+
+            <span class="h-5 w-px bg-slate-800"></span>
+
+            <div class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+              <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
+              <span>Bristol, UK &bull; Prayagraj, India</span>
+            </div>
+          </div>
         </div>
 
-        <!-- Big Headline -->
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-6">
-          Architecting Intelligence with <br />
-          <span class="gradient-text-cyan">Deep Vision & Distributed AI</span>
-        </h1>
-
-        <!-- Subtitle & Identity -->
-        <p class="text-xl sm:text-2xl font-semibold text-slate-200 mb-2">
-          Pawan Kumar
-        </p>
-        <p class="text-xs sm:text-sm font-mono text-slate-400 mb-8 max-w-2xl">
-          <span class="text-cyan-400">Junior Research Fellow (IITRAM)</span> &bull; 
-          <span class="text-purple-400">B.Tech CSE '25 IIT (BHU) Varanasi (CPI 7.99)</span>
-        </p>
-
-        <!-- Concise Elevator Pitch -->
-        <p class="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed mb-10 font-normal">
-          Pioneering neural restoration architectures with <strong class="text-white font-semibold">Swin Transformers & Restormers</strong> for clinical MRI restoration. Architect of the <strong class="text-white font-semibold">NoiseAwareSwinUNet</strong> model accepted at <strong>NCVPRIPG 2026</strong>. Passionate about Whole-Body DWI, Privacy-Preserving Federated Intelligence, and high-concurrency systems.
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
-          <a href="#research" class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-teal-500 to-indigo-600 text-white font-semibold text-sm sm:text-base shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.7)] transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-            <span>Explore Research & Live Demo</span>
-            <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
-          </a>
-          <button onclick="openResumeModal()" class="px-7 py-3.5 rounded-xl glass-card text-slate-200 hover:text-white hover:border-cyan-400/50 text-sm sm:text-base font-medium transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
-            <i data-lucide="file-down" class="w-4 h-4 text-cyan-400"></i>
-            <span>Curated Resumes</span>
-          </button>
-          <button id="copy-email-btn" onclick="copyEmailToClipboard()" class="px-4 py-3.5 rounded-xl glass-card text-slate-400 hover:text-cyan-300 hover:border-cyan-400/50 text-sm transition-all flex items-center gap-1.5" title="Copy institutional email">
-            <i data-lucide="copy" class="w-4 h-4"></i>
-            <span id="copy-email-text" class="hidden sm:inline">Copy Email</span>
-          </button>
-        </div>
-
-        <!-- Social Proof & External Verified Links -->
-        <div class="flex flex-wrap items-center justify-center gap-5 text-slate-400 text-sm">
-          <a href="https://github.com/pkarw-25" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full glass-card hover:text-cyan-400 hover:border-cyan-500/50 transition-all hover:scale-110" aria-label="GitHub">
-            <i data-lucide="github" class="w-5 h-5"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/pawan-kumar-32439a239/" target="_blank" rel="noopener noreferrer" class="p-3 rounded-full glass-card hover:text-purple-400 hover:border-purple-500/50 transition-all hover:scale-110" aria-label="LinkedIn">
-            <i data-lucide="linkedin" class="w-5 h-5"></i>
-          </a>
-          <a href="mailto:pawan.kumar.cse21@iitbhu.ac.in" class="p-3 rounded-full glass-card hover:text-emerald-400 hover:border-emerald-500/50 transition-all hover:scale-110" aria-label="Email">
-            <i data-lucide="at-sign" class="w-5 h-5"></i>
-          </a>
-          <span class="h-6 w-px bg-slate-800 hidden sm:inline"></span>
-          <div class="flex items-center gap-2 text-xs font-mono text-slate-400">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-cyan-400"></i>
-            <span>Bristol, UK &bull; Prayagraj, India</span>
+        <!-- Right: Profile Photo in Circular Frame -->
+        <div class="flex-shrink-0">
+          <div class="relative w-60 h-60 sm:w-72 sm:h-72 rounded-full p-2 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 shadow-[0_0_40px_rgba(6,182,212,0.3)]">
+            <div class="w-full h-full rounded-full overflow-hidden bg-slate-900 border-2 border-slate-950">
+              <img 
+                src="profile_photo.jpeg" 
+                alt="Pawan Kumar" 
+                class="w-full h-full object-cover"
+                onerror="this.onerror=null; this.src='git_logo.png';" 
+              />
+            </div>
+            <div class="absolute bottom-2 right-4 px-3 py-1 rounded-full bg-slate-950/90 border border-cyan-500/50 text-[11px] font-mono text-cyan-300 shadow">
+              IIT (BHU) '25
+            </div>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- 2. RESEARCH SPOTLIGHT & INTERACTIVE MRI SLIDER -->
-    <section id="research" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-        <div>
-          <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-2">
-            <i data-lucide="sparkles" class="w-4 h-4"></i>
-            <span>Clinical Vision & Deep Learning</span>
-          </div>
-          <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-            NoiseAwareSwinUNet
-          </h2>
-          <p class="text-slate-400 max-w-2xl mt-3 text-sm sm:text-base">
-            Breakthrough Hybrid Swin Transformer & Restormer with Multi-Dconv Head Transposed Attention (MDTA) and Gated-Dconv Feed-Forward Networks (GDFN) for Whole-Body Diffusion Weighted Imaging (WB-DWI).
+    <!-- 2. ABOUT ME -->
+    <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="glass-panel-glow p-8 sm:p-10 rounded-3xl border border-slate-800">
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-2">Background</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">About Me</h2>
+
+        <div class="space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
+          <p>
+            I completed my Bachelor of Technology in Computer Science and Engineering from <strong>IIT (BHU) Varanasi</strong> (2021–2025) with a 7.99 CPI. Currently, I am based in the United Kingdom pursuing my <strong>MSc in Data Science at the University of Bristol</strong> (starting September 2026).
+          </p>
+          <p>
+            Between September 2025 and January 2026, I worked as a <strong>Junior Research Fellow (JRF)</strong> under Dr. Prasun Chandra Tripathi at the <strong>Institute of Infrastructure Technology Research and Management (IITRAM)</strong>. My work focused on medical image restoration, specifically tackling high noise levels in Whole-Body Diffusion Weighted MRI (WB-DWI). By combining Swin Transformers with Restormer blocks, our model achieved a PSNR of 40.92 dB and was accepted at <strong>NCVPRIPG 2026</strong>.
+          </p>
+          <p>
+            Outside research, I have hands-on experience building full-stack applications with Django and Spring Boot, developing privacy-preserving federated models, and solving 500+ problems across Codeforces and GeeksforGeeks.
           </p>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3.5 py-1.5 rounded-lg bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 font-mono text-xs">
-            NCVPRIPG 2026 Accepted
+
+        <!-- Quick Summary Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-slate-800 text-center font-mono">
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+            <span class="text-xl sm:text-2xl font-bold text-cyan-400 block">40.92 dB</span>
+            <span class="text-xs text-slate-400">Peak SNR (MRI)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+            <span class="text-xl sm:text-2xl font-bold text-purple-400 block">0.970</span>
+            <span class="text-xs text-slate-400">SSIM Score</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+            <span class="text-xl sm:text-2xl font-bold text-emerald-400 block">7.99</span>
+            <span class="text-xs text-slate-400">CPI @ IIT BHU</span>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+            <span class="text-xl sm:text-2xl font-bold text-amber-400 block">500+</span>
+            <span class="text-xs text-slate-400">DSA Solved</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. RESEARCH SPOTLIGHT & INTERACTIVE MRI SLIDER -->
+    <section id="research" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-2">Medical Imaging & Vision</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">NoiseAwareSwinUNet</h2>
+          <p class="text-slate-400 max-w-2xl mt-2 text-sm sm:text-base">
+            A hybrid Swin Transformer and Restormer architecture engineered for denoising Whole-Body Diffusion-Weighted MRI scans.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 rounded-lg bg-cyan-950 border border-cyan-500/40 text-cyan-300 font-mono text-xs">
+            NCVPRIPG 2026 (Accepted)
           </span>
-          <span class="px-3.5 py-1.5 rounded-lg bg-purple-950/80 border border-purple-500/40 text-purple-300 font-mono text-xs">
-            arXiv:2026 Preprint
+          <span class="px-3 py-1 rounded-lg bg-purple-950 border border-purple-500/40 text-purple-300 font-mono text-xs">
+            arXiv Preprint (2026)
           </span>
         </div>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        
-        <!-- Left Column: Architectural Innovations & Metrics -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="glass-card p-6 rounded-2xl border-l-4 border-l-cyan-500 space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono text-slate-400">APPOINTMENT & MENTORSHIP</span>
-              <span class="text-xs font-mono text-cyan-400 bg-cyan-950/80 px-2 py-0.5 rounded">IITRAM / JRF</span>
-            </div>
-            <h3 class="text-lg font-bold text-white">Junior Research Fellow (JRF)</h3>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Advisor: <span class="text-cyan-300 font-semibold">Dr. Prasun Chandra Tripathi</span>. Engineered specialized noise-suppression pipelines preserving sharp tissue boundaries and metabolic contrast in DWI acquisitions.
+        <!-- Details Column -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="glass-card p-6 rounded-2xl border-l-4 border-l-cyan-500">
+            <span class="text-xs font-mono text-slate-400 block">APPOINTMENT & LAB</span>
+            <h3 class="text-lg font-bold text-white mt-1">Junior Research Fellow (JRF)</h3>
+            <p class="text-xs sm:text-sm text-cyan-300 font-medium">
+              Institute of Infrastructure Technology Research and Management (IITRAM)
+            </p>
+            <p class="text-xs text-slate-400 mt-1">
+              Advisor: <span class="text-slate-200">Dr. Prasun Chandra Tripathi</span> (Sep 2025 &ndash; Jan 2026)
             </p>
           </div>
 
-          <!-- Highlight Metric Cards -->
-          <div class="grid grid-cols-2 gap-4">
-            <div class="glass-card p-5 rounded-2xl border border-cyan-500/20 text-center relative overflow-hidden group">
-              <p class="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono">40.92 <span class="text-sm text-cyan-200">dB</span></p>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Peak SNR (PSNR)</p>
-              <p class="text-[11px] text-emerald-400 mt-0.5">Benchmark Quality</p>
-            </div>
-            <div class="glass-card p-5 rounded-2xl border border-purple-500/20 text-center relative overflow-hidden group">
-              <p class="text-3xl sm:text-4xl font-extrabold text-purple-400 font-mono">0.970</p>
-              <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-1">Structural SSIM</p>
-              <p class="text-[11px] text-purple-300 mt-0.5">Micro-Margin Retained</p>
-            </div>
-          </div>
-
-          <!-- Key Architectural Breakthroughs -->
           <div class="glass-card p-6 rounded-2xl space-y-3">
-            <h4 class="text-sm font-bold text-slate-200 flex items-center gap-2">
-              <i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i>
-              Key Architectural Innovations
-            </h4>
-            <ul class="text-xs text-slate-400 space-y-2.5">
+            <h4 class="text-sm font-bold text-slate-200">How the architecture works:</h4>
+            <ul class="text-xs text-slate-300 space-y-2.5">
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-1.5 shrink-0"></span>
-                <span><strong>MDTA Blocks:</strong> Multi-Dconv Head Transposed Attention captures global context across channels with linear computational complexity.</span>
+                <span><strong>MDTA Blocks:</strong> Multi-Dconv Head Transposed Attention applies self-attention across channels rather than spatial dimensions, keeping memory usage practical.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-1.5 shrink-0"></span>
-                <span><strong>GDFN Integration:</strong> Gated-Dconv Feed-Forward Networks control signal flow to suppress non-central Rician noise distributions without blurring lesions.</span>
+                <span><strong>GDFN Networks:</strong> Gated-Dconv Feed-Forward Networks control signal flow to filter out non-central Rician noise without blurring clinical boundaries.</span>
               </li>
               <li class="flex items-start gap-2">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
-                <span><strong>Pathology Preservation:</strong> Accurately recovers critical diagnostic contrast on high-b-value diffusion MRI scans.</span>
+                <span><strong>Diagnostic Detail:</strong> Consistently preserves small lesions and sharp tissue boundaries even at high b-values.</span>
               </li>
             </ul>
           </div>
         </div>
 
-        <!-- Right Column: Interactive MRI Denoising Simulator -->
+        <!-- Interactive Comparison Slider -->
         <div class="lg:col-span-7">
           <div class="glass-panel-glow p-6 rounded-3xl border border-slate-700/60 shadow-2xl">
             <div class="flex items-center justify-between mb-4">
               <div>
-                <span class="text-xs font-mono text-cyan-400">INTERACTIVE IN-BROWSER BENCHMARK</span>
-                <h3 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                  <span>Dual-Domain Whole-Body DWI Simulation</span>
-                </h3>
+                <span class="text-xs font-mono text-cyan-400">INTERACTIVE DEMO</span>
+                <h3 class="text-base sm:text-lg font-bold text-white">MRI Slice Denoising Simulator</h3>
               </div>
-              <div class="text-xs font-mono text-slate-400 flex items-center gap-1.5">
+              <span class="text-xs font-mono text-slate-400 flex items-center gap-1">
                 <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5 text-cyan-400"></i>
                 <span class="hidden sm:inline">Drag divider to compare</span>
-              </div>
+              </span>
             </div>
 
-            <!-- Comparison Canvas Box -->
-            <div id="comparison-box" class="comparison-container w-full h-[320px] sm:h-[390px] rounded-2xl overflow-hidden relative cursor-ew-resize border border-slate-800 bg-slate-950">
+            <!-- Canvas Comparison Area -->
+            <div id="comparison-box" class="comparison-container w-full h-[320px] sm:h-[380px] rounded-2xl overflow-hidden relative cursor-ew-resize border border-slate-800 bg-slate-950">
               <!-- Restored Clean Base -->
               <canvas id="canvas-clean" class="absolute inset-0 w-full h-full block"></canvas>
 
@@ -394,34 +394,33 @@
                 <canvas id="canvas-noisy" class="absolute top-0 left-0 h-full block" style="width: 100%;"></canvas>
               </div>
 
-              <!-- Draggable Divider Handle -->
+              <!-- Draggable Handle -->
               <div id="slider-handle" class="comparison-handle left-1/2">
                 <div class="absolute top-1/2 -translate-y-1/2 -left-3.5 w-7 h-7 rounded-full bg-cyan-400 text-slate-950 flex items-center justify-center shadow-lg font-bold text-xs pointer-events-none">
                   &#8644;
                 </div>
               </div>
 
-              <!-- Diagnostic Tags -->
+              <!-- Labels -->
               <div class="absolute top-3 left-3 z-20 pointer-events-none">
-                <span class="px-2.5 py-1 rounded-md bg-rose-950/80 border border-rose-500/40 text-[11px] font-mono text-rose-300 backdrop-blur-md">
-                  Synthetic Rician Noise (Input)
+                <span class="px-2.5 py-1 rounded-md bg-rose-950/80 border border-rose-500/40 text-[11px] font-mono text-rose-300">
+                  Noisy Scan (Input)
                 </span>
               </div>
               <div class="absolute top-3 right-3 z-20 pointer-events-none">
-                <span class="px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-500/40 text-[11px] font-mono text-emerald-300 backdrop-blur-md">
-                  NoiseAwareSwinUNet (Restored)
+                <span class="px-2.5 py-1 rounded-md bg-emerald-950/80 border border-emerald-500/40 text-[11px] font-mono text-emerald-300">
+                  Model Output (Restored)
                 </span>
               </div>
 
-              <!-- Bottom Bar Info -->
-              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-slate-300 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-slate-800">
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-slate-300 bg-slate-950/80 px-3 py-1.5 rounded-lg border border-slate-800">
                 <span id="slider-split-text">Split: 50%</span>
-                <span class="text-cyan-400">Synthetic Brain MRI Phantom Slice</span>
+                <span class="text-cyan-400">Brain MRI Phantom Simulation</span>
               </div>
             </div>
 
-            <!-- Noise Parameter Slider & Regeneration -->
-            <div class="mt-4 flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-800/80">
+            <!-- Slider Controls -->
+            <div class="mt-4 flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-slate-800">
               <div class="flex items-center gap-3">
                 <label for="noise-slider" class="text-xs text-slate-300 font-mono flex items-center gap-1.5">
                   <i data-lucide="gauge" class="w-3.5 h-3.5 text-cyan-400"></i>
@@ -432,217 +431,165 @@
               </div>
               <button id="regen-phantom-btn" class="text-xs font-mono text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 transition flex items-center gap-1.5">
                 <i data-lucide="refresh-cw" class="w-3 h-3 text-cyan-400"></i>
-                <span>Regenerate Phantom</span>
+                <span>Regenerate Slice</span>
               </button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- 3. FEATURED PROJECTS -->
-    <section id="projects" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 text-purple-400 font-mono text-xs uppercase tracking-wider mb-2">
-          <i data-lucide="terminal" class="w-4 h-4"></i>
-          <span>Engineered Artifacts & Distributed Systems</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Featured Engineering & Projects
-        </h2>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          From federated learning and distributed optimization to high-load backend transactional architectures.
+    <!-- 4. FEATURED PROJECTS -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-mono text-purple-400 uppercase tracking-wider block mb-2">Projects</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">What I've Built</h2>
+        <p class="text-slate-400 mt-2 text-sm sm:text-base">
+          Selected machine learning, deep vision, and software engineering projects.
         </p>
-
-        <!-- Category Filters -->
-        <div class="flex flex-wrap justify-center gap-2 mt-8">
-          <button onclick="filterProjects('all')" class="project-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-all" data-cat="all">All Projects</button>
-          <button onclick="filterProjects('ai')" class="project-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all" data-cat="ai">AI / Vision & ML</button>
-          <button onclick="filterProjects('systems')" class="project-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all" data-cat="systems">Distributed & Systems</button>
-        </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Project 1: NoiseAwareSwinUNet -->
-        <div class="glass-card p-6 rounded-3xl border border-cyan-500/30 flex flex-col justify-between project-item" data-cat="ai">
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-cyan-500/30">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-500/40">
-                Medical AI / Vision
+                Medical AI
               </span>
-              <span class="text-[11px] font-mono text-purple-400">NCVPRIPG '26</span>
+              <span class="text-[11px] font-mono text-purple-300">NCVPRIPG '26</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">NoiseAwareSwinUNet</h3>
+            <h3 class="text-lg font-bold text-white mb-2">NoiseAwareSwinUNet</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Hybrid Swin Transformer and Restormer architecture engineered for Whole-Body DWI denoising. Captures long-range spatial context with MDTA and GDFN blocks to preserve micro-tumor margins.
+              Restores Whole-Body DWI scans by coupling Swin Transformers with Restormer MDTA and GDFN blocks to suppress Rician noise while protecting lesion contrast.
             </p>
-            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 mb-4 font-mono text-xs flex justify-between">
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 mb-4 font-mono text-xs flex justify-between">
               <span>PSNR: <strong class="text-cyan-400">40.92 dB</strong></span>
               <span>SSIM: <strong class="text-purple-400">0.970</strong></span>
             </div>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">PyTorch</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Swin</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Restormer</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">WB-DWI</span>
-            </div>
           </div>
           <div class="flex gap-2">
-            <button onclick="openModal('swin')" class="w-full py-2 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition font-mono text-xs flex items-center justify-center gap-1.5">
-              <span>Architecture Specs</span>
+            <a href="https://github.com/pkarw-25" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-950/40 transition font-mono text-xs flex items-center justify-center gap-1.5">
+              <span>GitHub Profile</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-            </button>
+            </a>
           </div>
         </div>
 
-        <!-- Project 2: Federated Time Series Energy Forecasting -->
-        <div class="glass-card p-6 rounded-3xl border border-purple-500/30 flex flex-col justify-between project-item" data-cat="ai">
+        <!-- Project 2: Federated Forecasting -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-purple-950 text-purple-300 border border-purple-500/40">
                 Federated Learning
               </span>
-              <span class="text-[11px] font-mono text-slate-400">Privacy AI</span>
+              <span class="text-[11px] font-mono text-slate-400">TensorFlow</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Federated Energy Forecasting</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Federated Time Series Forecasting</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Privacy-preserving federated deep learning pipeline integrating Temporal Convolutional Networks (TCN) with Bidirectional LSTM to accurately forecast regional power demand with zero raw data aggregation.
+              A privacy-preserving pipeline combining Temporal Convolutional Networks (TCN) with Bi-directional LSTM to predict regional energy usage across decentralized clients without centralizing raw data.
             </p>
-            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 mb-4 font-mono text-xs flex justify-between">
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 mb-4 font-mono text-xs flex justify-between">
               <span>R&sup2;: <strong class="text-emerald-400">0.999997</strong></span>
               <span>MSE: <strong class="text-purple-400">0.0012</strong></span>
             </div>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">TensorFlow</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">TCN</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Bi-LSTM</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">FedAvg</span>
-            </div>
           </div>
-          <div class="flex gap-2">
-            <a href="https://github.com/pkarw-25/Fedrated_Time_Series_Forecasting" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-purple-500/40 text-purple-300 hover:bg-purple-950/40 transition font-mono text-xs flex items-center justify-center gap-1.5">
+          <div>
+            <a href="https://github.com/pkarw-25/Fedrated_Time_Series_Forecasting" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition font-mono text-xs flex items-center justify-center gap-1.5">
               <span>GitHub Repo</span>
-              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
         <!-- Project 3: Railway Booking Engine -->
-        <div class="glass-card p-6 rounded-3xl border border-emerald-500/30 flex flex-col justify-between project-item" data-cat="systems">
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-emerald-950 text-emerald-300 border border-emerald-500/40">
-                Distributed Backend
+                Backend System
               </span>
-              <span class="text-[11px] font-mono text-slate-400">IRCTC Grade</span>
+              <span class="text-[11px] font-mono text-slate-400">Spring Boot</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Railway Ticket Engine</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Railway Ticket Booking System</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Transactional reservation engine featuring dynamic sub-route merging. Recombines canceled sub-station segments into contiguous seat blocks to resolve passenger waitlists and maximize carriage occupancy.
+              An IRCTC-like reservation system with MySQL and Spring Boot. Implemented interval-merging algorithms to combine canceled sub-station seats into longer journeys, clearing passenger waitlists efficiently.
             </p>
-            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 mb-4 font-mono text-xs">
-              <span class="text-slate-400 block text-[10px]">CORE ARCHITECTURE</span>
-              <span class="text-emerald-400 font-semibold">Sub-Route Graph Interval Merging</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Spring Boot</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Java</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">MySQL</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">ACID</span>
+            <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-800 mb-4 font-mono text-xs">
+              <span class="text-emerald-400">Dynamic Sub-route Interval Stitching</span>
             </div>
           </div>
-          <div class="flex gap-2">
-            <a href="https://irctc-niklaus.onrender.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-emerald-500/40 text-emerald-300 hover:bg-emerald-950/40 transition font-mono text-xs flex items-center justify-center gap-1.5">
+          <div>
+            <a href="https://irctc-niklaus.onrender.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition font-mono text-xs flex items-center justify-center gap-1.5">
               <span>Live Deployment</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- Project 4: Online Examination Platform (STA) -->
-        <div class="glass-card p-6 rounded-3xl border border-indigo-500/30 flex flex-col justify-between project-item" data-cat="systems">
+        <!-- Project 4: Online Examination Portal -->
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-indigo-950 text-indigo-300 border border-indigo-500/40">
-                Web Security
+                Django & MySQL
               </span>
               <span class="text-[11px] font-mono text-slate-400">STA Portal</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Online Examination Platform</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Online Examination Portal</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Hardened assessment engine with tokenized CSRF defense, anti-tamper sessions, randomized question sets, and automated grading pipelines reducing manual faculty overhead by 70%.
+              Built an automated testing platform with secure CSRF handling, exam scheduling, user authentication, and automatic grading that cut manual administrative work by 70%.
             </p>
-            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 mb-4 font-mono text-xs">
-              <span class="text-slate-400 block text-[10px]">IMPACT</span>
-              <span class="text-indigo-400 font-semibold">70% Manual Workload Reduction</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Django</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">MySQL</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Bootstrap</span>
-            </div>
           </div>
-          <div class="flex gap-2">
-            <a href="https://pk25.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-indigo-500/40 text-indigo-300 hover:bg-indigo-950/40 transition font-mono text-xs flex items-center justify-center gap-1.5">
-              <span>Live Portal</span>
+          <div>
+            <a href="https://pk25.pythonanywhere.com/" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition font-mono text-xs flex items-center justify-center gap-1.5">
+              <span>Live on PythonAnywhere</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
         <!-- Project 5: AI Pipeline for Segmentation -->
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between project-item" data-cat="ai">
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-slate-900 text-slate-300 border border-slate-700">
                 Computer Vision
               </span>
-              <span class="text-[11px] font-mono text-slate-400">OpenCV & PyTorch</span>
+              <span class="text-[11px] font-mono text-slate-400">OpenCV</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Image Segmentation Pipeline</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Image Segmentation Pipeline</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              End-to-end computer vision pipeline executing semantic segmentation, feature extraction, and bounding box localization with optimized inference.
+              Computer vision pipeline built with PyTorch and OpenCV for semantic image segmentation, object extraction, and bounding box analysis.
             </p>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">OpenCV</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">PyTorch</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Python</span>
-            </div>
           </div>
-          <div class="flex gap-2">
+          <div>
             <a href="https://github.com/pkarw-25/AI-Pipeline-for-Image-Segmentation-and-Object-Analysis" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition font-mono text-xs flex items-center justify-center gap-1.5">
-              <span>GitHub Source</span>
-              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              <span>GitHub Repo</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
         <!-- Project 6: Bitter-Sweet Classification -->
-        <div class="glass-card p-6 rounded-3xl border border-slate-800 flex flex-col justify-between project-item" data-cat="ai">
+        <div class="glass-card p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
           <div>
             <div class="flex items-center justify-between mb-3">
               <span class="px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-slate-900 text-slate-300 border border-slate-700">
                 Machine Learning
               </span>
-              <span class="text-[11px] font-mono text-slate-400">Molecular Modeling</span>
+              <span class="text-[11px] font-mono text-slate-400">Scikit-learn</span>
             </div>
-            <h3 class="text-xl font-bold text-white mb-2">Bitter-Sweet Classifier</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Bitter-Sweet Classification</h3>
             <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              Machine learning classifier analyzing chemical molecular features and sensory attributes to predict compound bitterness with high cross-validated accuracy.
+              Supervised machine learning model analyzing compound features to classify sensory bitterness with cross-validation and feature scaling.
             </p>
-            <div class="flex flex-wrap gap-1.5 mb-5">
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Scikit-learn</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">Pandas</span>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-300">NumPy</span>
-            </div>
           </div>
-          <div class="flex gap-2">
+          <div>
             <a href="https://github.com/pkarw-25/Bitter_Sweet_Classification" target="_blank" rel="noopener noreferrer" class="w-full py-2 rounded-xl border border-slate-700 text-slate-300 hover:text-white hover:bg-slate-800 transition font-mono text-xs flex items-center justify-center gap-1.5">
-              <span>GitHub Source</span>
-              <i data-lucide="github" class="w-3.5 h-3.5"></i>
+              <span>GitHub Repo</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
@@ -650,276 +597,76 @@
       </div>
     </section>
 
-    <!-- 4. TECHNICAL SKILLS MATRIX -->
-    <section id="skills" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 text-emerald-400 font-mono text-xs uppercase tracking-wider mb-2">
-          <i data-lucide="cpu" class="w-4 h-4"></i>
-          <span>Competencies & Tooling</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Technical Arsenal
-        </h2>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          Categorized scientific research libraries, computational platforms, and full-stack systems.
-        </p>
-
-        <!-- Category Filters -->
-        <div class="flex flex-wrap justify-center gap-2 mt-8">
-          <button onclick="filterSkills('all')" class="skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-all" data-skill-cat="all">All Disciplines</button>
-          <button onclick="filterSkills('ai')" class="skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all" data-skill-cat="ai">AI / Vision & DL</button>
-          <button onclick="filterSkills('languages')" class="skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all" data-skill-cat="languages">Languages</button>
-          <button onclick="filterSkills('systems')" class="skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all" data-skill-cat="systems">Systems & Web</button>
-        </div>
+    <!-- 5. EXPERIENCE & EDUCATION -->
+    <section id="experience" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-2">Career & Studies</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Experience & Education</h2>
       </div>
 
-      <div id="skills-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-        
-        <!-- AI / Vision -->
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="network" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Swin Transformers</span>
-          <span class="text-[10px] font-mono text-cyan-400">Vision Core</span>
-        </div>
+      <div class="relative border-l border-slate-800 ml-4 sm:ml-8 space-y-10">
 
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="eye" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Restormer (MDTA)</span>
-          <span class="text-[10px] font-mono text-cyan-400">Image Restoration</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="flame" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">PyTorch</span>
-          <span class="text-[10px] font-mono text-cyan-400">Deep Learning</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="box" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">TensorFlow / Keras</span>
-          <span class="text-[10px] font-mono text-cyan-400">Models</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="activity" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Medical Imaging</span>
-          <span class="text-[10px] font-mono text-cyan-400">WB-DWI / MRI</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="ai">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 flex items-center justify-center text-cyan-400">
-            <i data-lucide="share-2" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Federated Learning</span>
-          <span class="text-[10px] font-mono text-cyan-400">Privacy AI</span>
-        </div>
-
-        <!-- Languages -->
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400 font-mono font-bold text-sm">
-            C++
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">C++ (STL & DSA)</span>
-          <span class="text-[10px] font-mono text-purple-400">High-Perf Logic</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400 font-mono font-bold text-sm">
-            Py
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Python 3 (ML)</span>
-          <span class="text-[10px] font-mono text-purple-400">Primary Core</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400 font-mono font-bold text-sm">
-            R
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">R Statistical</span>
-          <span class="text-[10px] font-mono text-purple-400">Data Analytics</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400 font-mono font-bold text-sm">
-            C
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">C Language</span>
-          <span class="text-[10px] font-mono text-purple-400">Memory & Systems</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400">
-            <i data-lucide="database" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">MySQL & SQL</span>
-          <span class="text-[10px] font-mono text-purple-400">Relational DB</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="languages">
-          <div class="w-10 h-10 rounded-xl bg-purple-950/80 flex items-center justify-center text-purple-400">
-            <i data-lucide="table" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Pandas & NumPy</span>
-          <span class="text-[10px] font-mono text-purple-400">Data Vectorization</span>
-        </div>
-
-        <!-- Systems & Web -->
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="server" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Django</span>
-          <span class="text-[10px] font-mono text-emerald-400">Web Backend</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="coffee" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Spring Boot</span>
-          <span class="text-[10px] font-mono text-emerald-400">Microservices</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="terminal" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Linux & Bash</span>
-          <span class="text-[10px] font-mono text-emerald-400">Environment</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="shield-check" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Web Security</span>
-          <span class="text-[10px] font-mono text-emerald-400">CSRF / Auth</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="git-branch" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">Git & GitHub</span>
-          <span class="text-[10px] font-mono text-emerald-400">Version Control</span>
-        </div>
-
-        <div class="skill-card p-4 rounded-2xl glass-card flex flex-col items-center text-center justify-center gap-2" data-skill="systems">
-          <div class="w-10 h-10 rounded-xl bg-emerald-950/80 flex items-center justify-center text-emerald-400">
-            <i data-lucide="layout" class="w-5 h-5"></i>
-          </div>
-          <span class="font-semibold text-xs sm:text-sm text-slate-200">HTML5 / CSS3</span>
-          <span class="text-[10px] font-mono text-emerald-400">Bootstrap / Tailwind</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- 5. EXPERIENCE & TRAJECTORY -->
-    <section id="experience" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-2">
-          <i data-lucide="briefcase" class="w-4 h-4"></i>
-          <span>Track Record</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Research & Industry Experience
-        </h2>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          Research fellowships, applied machine learning internships, and undergraduate academic mentorship.
-        </p>
-      </div>
-
-      <div class="relative border-l border-slate-800 ml-4 md:ml-24 space-y-10">
-
-        <!-- Experience 1: IITRAM JRF -->
-        <div class="relative pl-8 group">
-          <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cyan-950 border-2 border-cyan-400 flex items-center justify-center text-cyan-300 shadow-[0_0_15px_rgba(6,182,212,0.6)]">
-            <i data-lucide="microscope" class="w-4 h-4"></i>
-          </div>
-          <div class="glass-card p-6 rounded-2xl border border-cyan-500/30">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="badge bg-cyan-950 text-cyan-300 border border-cyan-500/30 text-xs font-mono px-3 py-1 rounded-full">
-                Research Fellowship
-              </span>
-              <span class="text-xs font-mono text-slate-400">Sep 2025 &ndash; Jan 2026 &bull; Ahmedabad, Gujarat, India</span>
+        <!-- Role 1: Bristol -->
+        <div class="relative pl-7">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-400 border-2 border-slate-950"></div>
+          <div class="glass-card p-6 rounded-2xl border border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-mono text-cyan-400">September 2026 &ndash; Present</span>
+              <span class="text-xs font-mono text-slate-400">Bristol, United Kingdom</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Institute of Infrastructure Technology Research and Management(IITRAM)</h3>
-            <p class="text-cyan-300 font-medium text-sm">Junior Research Fellow (JRF) &bull; Advisor: Dr. Prasun Chandra Tripathi</p>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2 mt-4 leading-relaxed">
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
-                <span>Architected <strong>NoiseAwareSwinUNet</strong>, unifying Swin Transformer shifted-window attention with Restormer MDTA and GDFN blocks for whole-body MRI restoration.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
-                <span>Attained state-of-the-art restoration quality with <strong>PSNR of 40.92 dB</strong> and <strong>SSIM of 0.970</strong>, preserving critical diagnostic tumor margins.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 mt-2 shrink-0"></span>
-                <span>Authored research accepted for presentation and publication in <strong>NCVPRIPG 2026</strong> and archived on <strong>arXiv (2026)</strong>.</span>
-              </li>
-            </ul>
+            <h3 class="text-xl font-bold text-white">University of Bristol</h3>
+            <p class="text-sm text-cyan-300 font-medium">MSc in Data Science</p>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2">
+              Focusing on large-scale data science, advanced machine learning, and statistical analysis.
+            </p>
           </div>
         </div>
 
-        <!-- Experience 2: Main Flow Service and Technology -->
-        <div class="relative pl-8 group">
-          <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-purple-950 border-2 border-purple-400 flex items-center justify-center text-purple-300 shadow-[0_0_15px_rgba(139,92,246,0.6)]">
-            <i data-lucide="line-chart" class="w-4 h-4"></i>
-          </div>
+        <!-- Role 2: IITRAM JRF -->
+        <div class="relative pl-7">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-400 border-2 border-slate-950"></div>
           <div class="glass-card p-6 rounded-2xl border border-purple-500/30">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="badge bg-purple-950 text-purple-300 border border-purple-500/30 text-xs font-mono px-3 py-1 rounded-full">
-                Industry Internship
-              </span>
-              <span class="text-xs font-mono text-slate-400">May 2024 &ndash; Jul 2024 &bull; Remote</span>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-mono text-purple-300">September 2025 &ndash; January 2026</span>
+              <span class="text-xs font-mono text-slate-400">Ahmedabad, Gujarat, India</span>
             </div>
-            <h3 class="text-xl font-bold text-white">Main Flow Service and Technology</h3>
-            <p class="text-purple-300 font-medium text-sm">Data Science Intern</p>
-            <ul class="text-xs sm:text-sm text-slate-300 space-y-2 mt-4 leading-relaxed">
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 shrink-0"></span>
-                <span>Achieved <strong>85% accuracy</strong> in multi-variate time series analysis for trend forecasting and resource utilization.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 shrink-0"></span>
-                <span>Enhanced sentiment classification accuracy by <strong>15%</strong> on noisy unstructured textual data.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mt-2 shrink-0"></span>
-                <span>Constructed data clustering pipelines for customer segmentation and anomaly recognition.</span>
-              </li>
+            <h3 class="text-xl font-bold text-white">Institute of Infrastructure Technology Research and Management (IITRAM)</h3>
+            <p class="text-sm text-purple-300 font-medium">Junior Research Fellow (JRF) &bull; Advisor: Dr. Prasun Chandra Tripathi</p>
+            <ul class="text-xs sm:text-sm text-slate-300 mt-3 space-y-1.5">
+              <li>&bull; Developed NoiseAwareSwinUNet, a hybrid Swin Transformer and Restormer model for MRI denoising.</li>
+              <li>&bull; Integrated MDTA and GDFN blocks to handle global and local spatial features simultaneously.</li>
+              <li>&bull; Achieved a PSNR of 40.92 dB and SSIM of 0.97, with paper accepted at NCVPRIPG 2026.</li>
             </ul>
           </div>
         </div>
 
-        <!-- Experience 3: Academic Mentor MA102 at IIT BHU -->
-        <div class="relative pl-8 group">
-          <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-emerald-950 border-2 border-emerald-400 flex items-center justify-center text-emerald-300 shadow-[0_0_15px_rgba(16,185,129,0.6)]">
-            <i data-lucide="users" class="w-4 h-4"></i>
-          </div>
-          <div class="glass-card p-6 rounded-2xl border border-emerald-500/30">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-              <span class="badge bg-emerald-950 text-emerald-300 border border-emerald-500/30 text-xs font-mono px-3 py-1 rounded-full">
-                Academic Leadership
-              </span>
-              <span class="text-xs font-mono text-slate-400">Nov 2022 &ndash; Jan 2023 &bull; Varanasi, India</span>
+        <!-- Role 3: IIT (BHU) -->
+        <div class="relative pl-7">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-400 border-2 border-slate-950"></div>
+          <div class="glass-card p-6 rounded-2xl border border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-mono text-emerald-300">November 2021 &ndash; May 2025</span>
+              <span class="text-xs font-mono text-slate-400">Varanasi, Uttar Pradesh, India</span>
             </div>
-            <h3 class="text-xl font-bold text-white">IIT (BHU) Student Counselling Service</h3>
-            <p class="text-emerald-300 font-medium text-sm">Academic Mentor (MA102 - Advanced Mathematics)</p>
-            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
-              Selected to tutor and guide first-year undergraduate engineering students through advanced linear algebra, differential calculus, and problem-solving clinics for cohorts of 50+ students.
+            <h3 class="text-xl font-bold text-white">Indian Institute of Technology, Varanasi (IIT BHU)</h3>
+            <p class="text-sm text-emerald-300 font-medium">B.Tech in Computer Science and Engineering &bull; CPI: 7.99 / 10.0</p>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2">
+              Coursework in Data Structures, Algorithms, Operating Systems, Database Management Systems, Machine Learning, and Computer Networks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Role 4: Academic Mentor -->
+        <div class="relative pl-7">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-2 border-slate-950"></div>
+          <div class="glass-card p-6 rounded-2xl border border-slate-800">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-1">
+              <span class="text-xs font-mono text-amber-300">Nov 2022 &ndash; Jan 2023</span>
+              <span class="text-xs font-mono text-slate-400">IIT (BHU) Student Counselling Service</span>
+            </div>
+            <h3 class="text-lg font-bold text-white">Academic Mentor &ndash; MA102 (Mathematics II)</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-1">
+              Tutored and guided first-year engineering students through advanced calculus and linear algebra topics.
             </p>
           </div>
         </div>
@@ -927,188 +674,143 @@
       </div>
     </section>
 
-    <!-- 6. EDUCATION & DISTINCTIONS -->
-    <section id="education" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <div class="inline-flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider mb-2">
-          <i data-lucide="award" class="w-4 h-4"></i>
-          <span>Academic Pedigree</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-          Education & Distinctions
-        </h2>
-        <p class="text-slate-400 mt-4 text-sm sm:text-base">
-          Academic foundation spanning premier UK and Indian engineering institutions.
-        </p>
+    <!-- 6. SKILLS -->
+    <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-mono text-emerald-400 uppercase tracking-wider block mb-2">Technical Skills</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Tools</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        
-        <!-- University of Bristol -->
-        <div class="glass-card p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono text-cyan-400 px-2.5 py-1 rounded bg-cyan-950/70 border border-cyan-500/30">Sep 2026 &ndash; Present</span>
-            <span class="text-xs font-mono text-slate-400">Bristol, UK</span>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">University of Bristol</h3>
-          <p class="text-cyan-300 font-medium text-sm mb-4">MSc in Data Science &bull; Faculty of Engineering</p>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-            Advanced training in statistical machine learning, Bayesian computational statistics, large-scale deep learning systems, and computational data science.
-          </p>
-          <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-300">
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Advanced ML</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Large-Scale Analytics</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Deep Vision</span>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="glass-card p-6 rounded-2xl border border-cyan-500/20">
+          <h3 class="text-sm font-bold font-mono text-cyan-400 mb-4 flex items-center gap-2">
+            <i data-lucide="code" class="w-4 h-4"></i>
+            Programming Languages
+          </h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">C++</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">C</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Python</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">R</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">SQL</span>
           </div>
         </div>
 
-        <!-- IIT (BHU) Varanasi -->
-        <div class="glass-card p-8 rounded-3xl border border-purple-500/30 relative overflow-hidden group">
-          <div class="flex items-center justify-between mb-3">
-            <span class="text-xs font-mono text-purple-400 px-2.5 py-1 rounded bg-purple-950/70 border border-purple-500/30">Nov 2021 &ndash; May 2025</span>
-            <span class="text-xs font-mono text-slate-400">Varanasi, India</span>
-          </div>
-          <h3 class="text-2xl font-bold text-white mb-1">Indian Institute of Technology (BHU)</h3>
-          <p class="text-purple-300 font-medium text-sm mb-4">B.Tech in Computer Science and Engineering &bull; <strong class="text-white">CPI: 7.99 / 10.0</strong></p>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-            Rigorous core curriculum in Data Structures, Advanced Algorithms, Operating Systems, Computer Architecture, Database Systems, Compilers, and AI.
-          </p>
-          <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-300">
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Operating Systems</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Algorithms</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">DBMS</span>
-            <span class="px-2.5 py-1 rounded-md bg-slate-900 border border-slate-800">Networks</span>
+        <div class="glass-card p-6 rounded-2xl border border-purple-500/20">
+          <h3 class="text-sm font-bold font-mono text-purple-400 mb-4 flex items-center gap-2">
+            <i data-lucide="cpu" class="w-4 h-4"></i>
+            Machine Learning & Vision
+          </h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">PyTorch</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">TensorFlow</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Keras</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Scikit-learn</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Pandas / NumPy</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">OpenCV</span>
           </div>
         </div>
 
-      </div>
-
-      <!-- Verified Distinctions Cards -->
-      <div class="glass-panel-glow p-8 rounded-3xl">
-        <h3 class="text-lg font-bold text-white mb-6 flex items-center gap-2">
-          <i data-lucide="zap" class="w-5 h-5 text-amber-400"></i>
-          <span>Key Verified Distinctions</span>
-        </h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1">
-            <div class="text-cyan-400 text-xs font-mono">PEER-REVIEWED</div>
-            <strong class="text-sm text-white block">NCVPRIPG 2026</strong>
-            <p class="text-xs text-slate-400">Accepted conference paper for NoiseAwareSwinUNet Whole-Body DWI restoration.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1">
-            <div class="text-purple-400 text-xs font-mono">OPEN RESEARCH</div>
-            <strong class="text-sm text-white block">arXiv:2026 Preprint</strong>
-            <p class="text-xs text-slate-400">Co-authored open-access preprint on deep attention-based medical image denoising.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1">
-            <div class="text-emerald-400 text-xs font-mono">GLOBAL SELECTION</div>
-            <strong class="text-sm text-white block">Morabu Hanshin (Japan)</strong>
-            <p class="text-xs text-slate-400">Cleared international technical rounds and competitive algorithmic system design assessments.</p>
-          </div>
-          <div class="p-4 rounded-2xl bg-slate-950/60 border border-slate-800 space-y-1">
-            <div class="text-amber-400 text-xs font-mono">ALGORITHMIC RIGOUR</div>
-            <strong class="text-sm text-white block">500+ DSA Challenges</strong>
-            <p class="text-xs text-slate-400">Extensive competitive problem solving on Codeforces and GeeksforGeeks.</p>
+        <div class="glass-card p-6 rounded-2xl border border-emerald-500/20">
+          <h3 class="text-sm font-bold font-mono text-emerald-400 mb-4 flex items-center gap-2">
+            <i data-lucide="server" class="w-4 h-4"></i>
+            Backend & Web Tools
+          </h3>
+          <div class="flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Django</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Spring Boot</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">MySQL</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Linux / Bash</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">Git / GitHub</span>
+            <span class="px-2.5 py-1 rounded bg-slate-800 text-slate-200">HTML5 / CSS3</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 7. CONTACT TERMINAL -->
-    <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="glass-panel-glow p-8 sm:p-14 rounded-3xl relative overflow-hidden">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <div class="glass-panel-glow p-8 sm:p-12 rounded-3xl border border-slate-800">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           
-          <!-- Contact Left Info -->
-          <div class="lg:col-span-5 space-y-6">
-            <div class="inline-flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider">
-              <i data-lucide="send" class="w-3.5 h-3.5"></i>
-              <span>Initiate Transmission</span>
+          <!-- Contact Details -->
+          <div class="md:col-span-5 space-y-5">
+            <div>
+              <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider block mb-1">Get in Touch</span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Contact Me</h2>
+              <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+                Feel free to reach out for research discussions, engineering projects, or just a friendly chat.
+              </p>
             </div>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
-              Let's Build Something Revolutionary
-            </h2>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              I am open to technical dialogues regarding deep learning architectures, medical vision restoration, federated optimization, and software engineering opportunities.
-            </p>
 
-            <div class="space-y-4 pt-2">
-              <div class="flex items-center gap-3 text-slate-300 text-sm">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-cyan-400 border border-slate-800 shrink-0">
-                  <i data-lucide="mail" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs text-slate-500 block">PRIMARY EMAIL</span>
-                  <a href="mailto:pawankumariit21@gmail.com" class="hover:text-cyan-400 font-mono transition-colors">
-                    pawankumariit21@gmail.com
-                  </a>
-                </div>
+            <div class="space-y-3 text-xs sm:text-sm font-mono text-slate-300">
+              <!-- Primary Email -->
+              <div class="flex items-center gap-3">
+                <i data-lucide="mail" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <a href="mailto:pawankumariit21@gmail.com" class="hover:text-cyan-400 transition-colors">
+                  pawankumariit21@gmail.com
+                </a>
               </div>
 
-              <div class="flex items-center gap-3 text-slate-300 text-sm">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-purple-400 border border-slate-800 shrink-0">
-                  <i data-lucide="at-sign" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs text-slate-500 block">INSTITUTIONAL EMAIL</span>
-                  <a href="mailto:pawan.kumar.cse21@iitbhu.ac.in" class="hover:text-purple-400 font-mono transition-colors">
-                    pawan.kumar.cse21@iitbhu.ac.in
-                  </a>
-                </div>
+              <!-- Institutional Email -->
+              <div class="flex items-center gap-3">
+                <i data-lucide="at-sign" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <a href="mailto:pawan.kumar.cse21@iitbhu.ac.in" class="hover:text-purple-400 transition-colors">
+                  pawan.kumar.cse21@iitbhu.ac.in
+                </a>
               </div>
 
-              <div class="flex items-center gap-3 text-slate-300 text-sm">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-emerald-400 border border-slate-800 shrink-0">
-                  <i data-lucide="phone" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs text-slate-500 block">DIRECT PHONE</span>
-                  <span class="font-mono text-slate-200">+91-9151533226</span>
-                </div>
+              <!-- UK Phone -->
+              <div class="flex items-center gap-3">
+                <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>UK: +44 7471605012</span>
               </div>
 
-              <div class="flex items-center gap-3 text-slate-300 text-sm">
-                <div class="w-9 h-9 rounded-xl bg-slate-900 flex items-center justify-center text-amber-400 border border-slate-800 shrink-0">
-                  <i data-lucide="map-pin" class="w-4 h-4"></i>
-                </div>
-                <div>
-                  <span class="text-xs text-slate-500 block">LOCATIONS</span>
-                  <span>Bristol, United Kingdom &bull; Prayagraj, UP, India</span>
-                </div>
+              <!-- India Phone -->
+              <div class="flex items-center gap-3">
+                <i data-lucide="phone-call" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                <span>IN: +91-9151533226</span>
               </div>
+
+              <!-- Location -->
+              <div class="flex items-center gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                <span>Bristol, UK &bull; Prayagraj, UP, India</span>
+              </div>
+            </div>
+
+            <!-- Social Links with Uploaded Logos -->
+            <div class="flex items-center gap-4 pt-3 border-t border-slate-800">
+              <a href="https://github.com/pkarw-25" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs font-mono text-slate-300 hover:text-cyan-400">
+                <img src="git_logo.png" alt="GitHub" class="w-5 h-5 rounded-full object-contain" onerror="this.onerror=null; this.src='https://github.githubassets.com/favicons/favicon.png';" />
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/pawan-kumar-32439a239/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xs font-mono text-slate-300 hover:text-purple-400">
+                <img src="LinkedIn_logo.png" alt="LinkedIn" class="w-5 h-5 rounded object-contain" onerror="this.onerror=null; this.src='https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca';" />
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
 
-          <!-- Contact Form with In-Browser Feedback -->
-          <div class="lg:col-span-7">
-            <form id="contact-form" onsubmit="handleContact(event)" class="space-y-4">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-mono text-slate-300 mb-1.5">YOUR NAME</label>
-                  <input type="text" id="contact-name" required placeholder="Dr. Alan Turing" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm transition" />
-                </div>
-                <div>
-                  <label class="block text-xs font-mono text-slate-300 mb-1.5">YOUR EMAIL</label>
-                  <input type="email" id="contact-email" required placeholder="alan@turing.ac.uk" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm transition" />
-                </div>
-              </div>
-
+          <!-- Contact Message Form -->
+          <div class="md:col-span-7">
+            <form id="contact-form" onsubmit="handleContact(event)" class="space-y-3.5">
               <div>
-                <label class="block text-xs font-mono text-slate-300 mb-1.5">SUBJECT / TOPIC</label>
-                <input type="text" id="contact-subject" required placeholder="Research Collaboration on Medical Image Restoration" class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm transition" />
+                <label class="block text-xs font-mono text-slate-300 mb-1">Name</label>
+                <input type="text" id="contact-name" required placeholder="Your name" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm" />
               </div>
-
               <div>
-                <label class="block text-xs font-mono text-slate-300 mb-1.5">MESSAGE</label>
-                <textarea id="contact-message" rows="4" required placeholder="Hi Pawan, I reviewed your work on NoiseAwareSwinUNet..." class="w-full px-4 py-3 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm transition resize-none"></textarea>
+                <label class="block text-xs font-mono text-slate-300 mb-1">Email</label>
+                <input type="email" id="contact-email" required placeholder="you@example.com" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm" />
               </div>
-
-              <button type="submit" id="contact-submit-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 via-teal-500 to-indigo-600 text-white font-semibold text-sm shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition flex items-center justify-center gap-2">
+              <div>
+                <label class="block text-xs font-mono text-slate-300 mb-1">Message</label>
+                <textarea id="contact-message" rows="4" required placeholder="Hi Pawan, I'd like to get in touch..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-800 focus:border-cyan-400 focus:outline-none text-slate-200 text-sm resize-none"></textarea>
+              </div>
+              <button type="submit" id="contact-submit-btn" class="w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition flex items-center justify-center gap-2">
                 <i data-lucide="send" class="w-4 h-4"></i>
-                <span id="contact-btn-label">Transmit Message</span>
+                <span id="contact-btn-label">Send Message</span>
               </button>
-
               <div id="contact-feedback" class="hidden p-3 rounded-xl text-center text-xs font-mono"></div>
             </form>
           </div>
@@ -1120,14 +822,15 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-slate-900 py-10 px-4 text-center text-xs font-mono text-slate-500 relative z-10">
+  <footer class="border-t border-slate-900 py-8 px-4 text-center text-xs font-mono text-slate-500 relative z-10">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-        <span class="text-slate-400">&copy; 2026 Pawan Kumar &bull; University of Bristol &bull; IIT (BHU)</span>
+      <div>
+        &copy; 2026 Pawan Kumar &bull; University of Bristol &bull; IIT (BHU)
       </div>
       <div class="flex items-center gap-4 text-slate-400">
-        <a href="#hero" class="hover:text-cyan-400">Back to Top</a>
+        <a href="#hero" class="hover:text-cyan-400">Top</a>
+        <span>&bull;</span>
+        <a href="Resume_Pawan.pdf" download="Pawan_Kumar_Resume.pdf" class="hover:text-cyan-400">Resume</a>
         <span>&bull;</span>
         <a href="https://github.com/pkarw-25" target="_blank" class="hover:text-cyan-400">GitHub</a>
         <span>&bull;</span>
@@ -1135,64 +838,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- RESUME OPTIONS MODAL -->
-  <div id="resume-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="glass-card w-full max-w-xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 relative shadow-2xl">
-      <button onclick="closeResumeModal()" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800" aria-label="Close Modal">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div class="text-center mb-6">
-        <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">Verified Documents</span>
-        <h3 class="text-2xl font-bold text-white mt-1">Curated Resumes</h3>
-        <p class="text-xs text-slate-400 mt-1">Select the profile tailored to your team's engineering or research focus.</p>
-      </div>
-
-      <div class="space-y-4">
-        <!-- Resume Option 1 -->
-        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 transition">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="text-white font-bold text-sm">Software Development & Research Resume</h4>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30">Primary</span>
-          </div>
-          <p class="text-xs text-slate-400 mb-3">Highlights MSc Data Science, B.Tech CSE (IIT BHU), NCVPRIPG research, and full-stack systems.</p>
-          <div class="flex gap-2">
-            <a href="mailto:pawankumariit21@gmail.com?subject=Resume%20Request%20-%20Pawan%20Kumar" class="flex-1 text-center py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs transition">
-              Request Latest PDF
-            </a>
-          </div>
-        </div>
-
-        <!-- Resume Option 2 -->
-        <div class="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-purple-500/50 transition">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="text-white font-bold text-sm">AI / Machine Learning Researcher Resume</h4>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-purple-950 text-purple-300 border border-purple-500/30">Research</span>
-          </div>
-          <p class="text-xs text-slate-400 mb-3">Tailored for deep vision labs, medical imaging restoration, and statistical data science.</p>
-          <div class="flex gap-2">
-            <a href="mailto:pawan.kumar.cse21@iitbhu.ac.in?subject=AI%20Research%20Resume%20Request" class="flex-1 text-center py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-mono text-xs transition">
-              Request Research CV
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ARCHITECTURE DETAIL MODAL -->
-  <div id="project-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md">
-    <div class="glass-card w-full max-w-2xl rounded-3xl p-6 sm:p-8 border border-cyan-500/40 relative shadow-2xl overflow-y-auto max-h-[90vh]">
-      <button onclick="closeModal()" class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white bg-slate-900 border border-slate-800" aria-label="Close Modal">
-        <i data-lucide="x" class="w-5 h-5"></i>
-      </button>
-
-      <div id="modal-body" class="space-y-4">
-        <!-- Injected via JavaScript -->
-      </div>
-    </div>
-  </div>
 
   <!-- SCRIPT LOGIC -->
   <script>
@@ -1212,7 +857,7 @@
     // 3. Three.js 3D Neural Constellation Network
     let scene, camera, renderer, particlePoints, linesMesh;
     let particlePositions, particleVelocities;
-    const particleCount = 120;
+    const particleCount = 100;
     const maxDistance = 145;
     let mouseX = 0, mouseY = 0;
     let warpFactor = 1.0;
@@ -1240,14 +885,14 @@
         particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 400;
 
         particleVelocities.push({
-          x: (Math.random() - 0.5) * 0.45,
-          y: (Math.random() - 0.5) * 0.45,
+          x: (Math.random() - 0.5) * 0.4,
+          y: (Math.random() - 0.4) * 0.4,
           z: (Math.random() - 0.5) * 0.3
         });
       }
       pGeom.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
-      // Point texture canvas
+      // Circular Point Texture
       const cvs = document.createElement('canvas');
       cvs.width = 32; cvs.height = 32;
       const c = cvs.getContext('2d');
@@ -1270,7 +915,7 @@
       particlePoints = new THREE.Points(pGeom, pMat);
       scene.add(particlePoints);
 
-      // Line segments
+      // Line Segments
       const lGeom = new THREE.BufferGeometry();
       const maxLines = (particleCount * (particleCount - 1)) / 2;
       const lPositions = new Float32Array(maxLines * 6);
@@ -1290,8 +935,8 @@
       scene.add(linesMesh);
 
       window.addEventListener('mousemove', (e) => {
-        mouseX = (e.clientX - window.innerWidth / 2) * 0.1;
-        mouseY = (e.clientY - window.innerHeight / 2) * 0.1;
+        mouseX = (e.clientX - window.innerWidth / 2) * 0.08;
+        mouseY = (e.clientY - window.innerHeight / 2) * 0.08;
       });
 
       window.addEventListener('resize', () => {
@@ -1370,7 +1015,7 @@
     const warpBtn = document.getElementById('warp-btn');
     if (warpBtn) {
       warpBtn.addEventListener('click', () => {
-        warpFactor = 4.2;
+        warpFactor = 4.0;
       });
     }
 
@@ -1419,7 +1064,7 @@
       ctxClean.fillStyle = '#0f172a';
       ctxClean.fill();
 
-      // Brain Lobes (Grey & White Matter)
+      // Brain Lobes
       const lobes = [
         { dx: -rx * 0.4, dy: -ry * 0.35, r: rx * 0.38, col: '#cbd5e1' },
         { dx: rx * 0.4, dy: -ry * 0.35, r: rx * 0.38, col: '#cbd5e1' },
@@ -1442,7 +1087,7 @@
       ctxClean.fillStyle = '#030712';
       ctxClean.fill();
 
-      // Hyperintense Tumor Lesion Focus
+      // Focal Lesion
       ctxClean.beginPath();
       ctxClean.arc(cx - rx * 0.45, cy + ry * 0.2, 16, 0, Math.PI * 2);
       ctxClean.fillStyle = '#38bdf8';
@@ -1451,7 +1096,7 @@
       ctxClean.fill();
       ctxClean.shadowBlur = 0;
 
-      // Synthetic Rician Noise Simulation
+      // Synthetic Rician Noise
       const cleanImg = ctxClean.getImageData(0, 0, w, h);
       const noisyImg = ctxNoisy.createImageData(w, h);
       const sigma = parseInt(noiseSlider.value, 10);
@@ -1498,121 +1143,27 @@
     regenBtn.addEventListener('click', drawPhantom);
     window.addEventListener('resize', drawPhantom);
 
-    // 5. Skill & Project Filters
-    function filterSkills(category) {
-      const cards = document.querySelectorAll('.skill-card');
-      const btns = document.querySelectorAll('.skill-btn');
-      btns.forEach(b => {
-        if (b.dataset.skillCat === category) {
-          b.className = 'skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-all';
-        } else {
-          b.className = 'skill-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all';
-        }
-      });
-      cards.forEach(c => {
-        if (category === 'all' || c.dataset.skill === category) {
-          c.style.display = 'flex';
-        } else {
-          c.style.display = 'none';
-        }
-      });
-    }
-
-    function filterProjects(cat) {
-      const items = document.querySelectorAll('.project-item');
-      const btns = document.querySelectorAll('.project-filter-btn');
-      btns.forEach(b => {
-        if (b.dataset.cat === cat) {
-          b.className = 'project-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 transition-all';
-        } else {
-          b.className = 'project-filter-btn px-4 py-1.5 rounded-xl text-xs font-mono bg-slate-900 text-slate-400 border border-slate-800 hover:text-white transition-all';
-        }
-      });
-      items.forEach(it => {
-        if (cat === 'all' || it.dataset.cat === cat) {
-          it.style.display = 'flex';
-        } else {
-          it.style.display = 'none';
-        }
-      });
-    }
-
-    // 6. Architecture Modals
-    function openModal(id) {
-      const modal = document.getElementById('project-modal');
-      const body = document.getElementById('modal-body');
-
-      if (id === 'swin') {
-        body.innerHTML = `
-          <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block">NCVPRIPG 2026 Accepted Conference Paper</span>
-          <h3 class="text-2xl font-bold text-white mb-1">NoiseAwareSwinUNet: Deep Medical Denoising</h3>
-          <p class="text-xs font-mono text-purple-300 mb-4">PSNR: 40.92 dB &bull; SSIM: 0.970 &bull; Whole-Body DWI</p>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            Whole-body diffusion-weighted MRI suffers from low SNR due to rapid phase decay, eddy currents, and patient motion. NoiseAwareSwinUNet addresses this fundamental bottleneck by pairing Swin Transformer's hierarchical shifted windows with Restormer's Multi-Dconv Head Transposed Attention (MDTA).
-          </p>
-          <div class="p-4 rounded-xl bg-slate-900 border border-cyan-500/30 text-xs font-mono text-cyan-300 space-y-1.5 my-3">
-            <div>&bull; Linear computational complexity attention via transposed channels</div>
-            <div>&bull; Gated-Dconv Feed-Forward Network (GDFN) filtering for non-central Rician noise</div>
-            <div>&bull; Significant preservation of micro-tumor margins on b-1000 acquisitions</div>
-          </div>
-          <p class="text-xs text-slate-400">
-            Advisors: Dr. Prasun Chandra Tripathi (IITRAM) in clinical collaboration with medical imaging datasets.
-          </p>
-        `;
-      }
-      modal.classList.remove('hidden');
-    }
-
-    function closeModal() {
-      document.getElementById('project-modal').classList.add('hidden');
-    }
-
-    function openResumeModal() {
-      document.getElementById('resume-modal').classList.remove('hidden');
-    }
-
-    function closeResumeModal() {
-      document.getElementById('resume-modal').classList.add('hidden');
-    }
-
-    // 7. Clipboard Email
-    function copyEmailToClipboard() {
-      const email = "pawan.kumar.cse21@itbhu.ac.in";
-      const dummy = document.createElement("textarea");
-      document.body.appendChild(dummy);
-      dummy.value = email;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-
-      const statusText = document.getElementById('copy-email-text');
-      statusText.textContent = "Copied!";
-      setTimeout(() => {
-        statusText.textContent = "Copy Email";
-      }, 2500);
-    }
-
-    // 8. Contact Form
+    // 5. Contact Form Simulation
     function handleContact(e) {
       e.preventDefault();
       const btnLabel = document.getElementById('contact-btn-label');
       const feedback = document.getElementById('contact-feedback');
       const name = document.getElementById('contact-name').value;
 
-      btnLabel.textContent = "Transmitting Packet...";
+      btnLabel.textContent = "Sending...";
       setTimeout(() => {
-        btnLabel.textContent = "Transmit Message";
+        btnLabel.textContent = "Send Message";
         feedback.className = "p-3 rounded-xl text-center text-xs font-mono bg-emerald-950/80 text-emerald-300 border border-emerald-500/40 block";
-        feedback.textContent = `Thank you, ${name}! Your transmission has been queued. I will get back to you shortly.`;
+        feedback.textContent = `Thanks, ${name}! Your message has been sent. I'll get back to you soon.`;
         document.getElementById('contact-form').reset();
 
         setTimeout(() => {
           feedback.className = "hidden";
         }, 5000);
-      }, 900);
+      }, 700);
     }
 
-    // 9. Onload Boot
+    // 6. Boot on Load
     window.addEventListener('DOMContentLoaded', () => {
       initThree();
       animateThree();
